@@ -9,6 +9,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using BlazorJWTAutentication.Server.Service;
+using BlazorJWTAutentication.Server.Interface;
 
 namespace BlazorJWTAutentication.Server
 {
@@ -27,6 +29,7 @@ namespace BlazorJWTAutentication.Server
         {
 
             services.AddControllersWithViews();
+            services.AddTransient<IJwtTokenService, JwtTokenServices>();
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
